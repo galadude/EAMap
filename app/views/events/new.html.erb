@@ -1,0 +1,12 @@
+<h1> Add event </h1> 
+
+<%= form_for :event, url: events_path do |f| %>
+<p>	<%= f.label :name %> <%= f.text_field :name %> </p>
+<p>	<%= f.label :location %> <%= f.text_field :location %> </p>
+<p>	<%= f.label :description %> <%= f.text_field :description %> </p>
+<p>	<%= f.label :organisation %> <%= f.text_field :organisation %> </p>
+<p>	<%= f.label :latitude %> <%= f.text_field :latitude %> </p>
+<p>	<%= f.label :longitude %> <%= f.text_field :longitude %> </p>
+<p> <%= f.submit %> </p>
+<% end %>
+	<!--:name :location :description :organisation :latitude :longitude-->
