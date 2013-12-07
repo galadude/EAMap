@@ -10,9 +10,21 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 
+	def destroy
+		@event = Event.find(params[:id])
+		@event.destroy
+		redirect_to events_path
+	end
+
 	def update
   		@event = Event.find(params[:id])
-		render 'edit'
+		if @event.update(params[:event].permit(
+			:name, :location, :description, :organisation, :latitude, :longitude
+		))
+    		redirect_to @event
+  		else
+    		render 'edit'
+  		end	
   	end
 
 	def index
