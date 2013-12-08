@@ -37,6 +37,10 @@ class EventsController < ApplicationController
 		@json_events = @events.to_json()
 	end
 
+	def map
+		
+	end
+	
 	def create 
 		@event = Event.new(params.require(:event).permit(
 		:name, :location, :description, :organisation, :latitude, :longitude

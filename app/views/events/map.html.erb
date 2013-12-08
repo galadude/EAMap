@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	 <!--[if lte IE 8]>
+		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+	 <![endif]-->
+                
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,300|Open+Sans:400,300,600,700|Oregano' rel='stylesheet' type='text/css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+         
+    <title>Title</title>
+    
+    <style>
+        
+        #wrapper {
+            padding:0 50px 20px;
+            font-family:'Open Sans';
+            background:url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
+        }
+        h1, h2, h3 {
+            font-family:'Oregano';
+        }
+        h1 {
+            font-size:4em;
+            color:#464646;
+            text-align:center;
+        }
+        #map {
+            border:1px solid #ccc;
+            border-radius:4px;
+            height:900px;
+        }
+        #map-wrapper {
+            padding:5px;
+            border-radius:8px;
+        
+        }
+        #list ul li a {
+            height:50px;
+            padding:20px;
+            background:#fff;
+            border-bottom:1px solid #ccc;
+            display:block;
+            width:100%;
+        
+        }
+        #list ul li a:hover {
+            text-decoration: none;
+            background:#3276B1;
+            color:white;
+        
+        }
+        #list ul li {
+            list-style:none;
+            display:block;
+            width:100%;
+        
+        }
+        #list {
+            border:1px solid #ccc;
+            border-radius:4px;
+            height:800px;
+            margin-right:-20px;
+        }
+        #list ul {
+            padding-left:0;
+        }
+        .top-buffer {
+            margin-top:10px;
+        }
+        #list .form-group {
+            padding:10px;
+        }
+        #list {
+            background:white;
+        }
+        .btn-group {
+            float:right;
+            margin-right:20px;
+        }
+    </style>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+			var map = L.map('map').setView([53.342148, -6.268659], 13);
+			L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+				maxZoom: 18
+			}).addTo(map);
+        });
+        
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h1>Effective Altruist Meetups</h1>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div id="map-wrapper" class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <div class="btn-group" data-toggle="buttons">
+                            
+                            <label class="btn  btn-primary">
+                              <input type="radio" name="options" id="option1"> All
+                            </label>
+                            <label class="btn  btn-primary">
+                              <input type="radio" name="options" id="option2"> Individuals
+                            </label>
+                            <label class="btn  btn-primary">
+                              <input type="radio" name="options" id="option3"> Meetups
+                            </label>
+                        </div>
+                        <div class="btn-group" data-toggle="buttons">
+                            
+                            <label class=" btn btn-primary">
+                              <input type="radio" name="options" id="option1"> Any
+                            </label>
+                            <label class=" btn btn-primary">
+                              <input type="radio" name="options" id="option1"> Once Off
+                            </label>
+                            <label class=" btn btn-primary">
+                              <input type="radio" name="options" id="option2"> Regular
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="col-md-3">
+                        
+                        <div id="list">
+                            <div class="form-group">
+                                <label class="sr-only" for="searchbox">Search</label>
+                                <input type="text" name="search" id="searchbox" placeholder="Search" class="form-control"/>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        List Item 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        List Item 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        List Item 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        List Item 1
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-9">
+                        <div id="map">
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            
+                
+                
+            </div>
+            
+            
+        </div>
+        
+        
+        
+    </div>
+
+
+</body>
+</html>
