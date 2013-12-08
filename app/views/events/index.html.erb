@@ -1,9 +1,13 @@
 <h1> events </h1> 
-<%= link_to 'new event', new_event_path  %> 
-<% @events.each do |event| %> 
-<h3> <%= event.name %> </h3>
-<%= link_to 'edit', edit_event_path(event) %> |
-<%= link_to 'delete', event_path(event), method: :delete,data: {confirm: 'sure?'} %> 
+<% if current_user.try(:admin?) %>
+	<%= link_to 'new event', new_event_path  %> 
 <% end %>
+
+<% @events.each do |event| %> 
+	<h3> <%= event.name %> </h3>
+	<% if current_user.try(:admin?) %> 
+		<%= link_to 'edit', edit_event_path(event) %> |
+		<%= link_to 'delete', event_path(event), method: :delete,data: {confirm: 'sure?'} %> 
+	<% end %>
 <% end %>
 
