@@ -1,6 +1,7 @@
 <h1> An event! </h1>
 <%= @event.name %> | 
-<%= @event.description %> 	
-<%= link_to 'edit' edit_event_path(@event) %> 
+<%= @event.description %> 
 <br>
-<%= link_to 'back' events_path %> 
+<%= link_to 'edit', edit_event_path(@event) %> 
+<br>
+<%= link_to 'back', events_path %> 
