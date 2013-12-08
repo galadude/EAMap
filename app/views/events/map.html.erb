@@ -17,11 +17,14 @@
     <title>Title</title>
     
     <style>
-        
+        html,body {
+            height:100%;
+        }
         #wrapper {
             padding:0 50px 20px;
             font-family:'Open Sans';
             background:url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
+            height:100%;
         }
         h1, h2, h3 {
             font-family:'Oregano';
@@ -34,12 +37,22 @@
         #map {
             border:1px solid #ccc;
             border-radius:4px;
-            height:900px;
+            height:500px;
+            background:#f9f9f9;
+            padding:5px;
+            border:1px solid #ccc;
+            
         }
         #map-wrapper {
             padding:5px;
             border-radius:8px;
         
+        }
+        #map-wrapper .col-md-12 {
+            background:#ffffff;
+            border-radius:4px;
+            border:1px solid #ccc;
+            padding:5px;
         }
         #list ul li a {
             height:50px;
@@ -88,12 +101,41 @@
     
     <script type="text/javascript">
         $(document).ready(function() {
-			var map = L.map('map').setView([53.342148, -6.268659], 13);
+			map = L.map('map').setView([53.342148, 0.268659], 6);
 			L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
 				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 				maxZoom: 18
 			}).addTo(map);
         });
+        selected_event = "";
+        
+        var marker_array = [];
+        function clear_markers() {
+            var len_arr = marker_array.length;
+            for (var y = 0; y < len_arr; y++) {
+                map.removeLayer(marker_array[y])
+            }
+        }
+        
+        function draw_map() {
+            $.ajax({
+                url: "/events/list_as_json"
+            })
+            .done(function( events ) {
+                clear_markers();
+                var len = events.length;
+                for (var i = 0; i < len; i++) {
+                    var lat = events[i].latitude;
+                    var lon = events[i].longitude;
+                    var marker = L.marker([lat, lon]).addTo(map);
+                    var popup_text = "Event: " + events[i].name;
+                    popup_text += "<br /> Location: " + events[i].location;
+                    marker.bindPopup(popup_text);
+                    marker_array.push(marker);
+                }
+            });
+        }
+        draw_map();
         
     </script>
 </head>
@@ -137,41 +179,7 @@
                     </div>
                 </div>
                 <div class="row top-buffer">
-                    <div class="col-md-3">
-                        
-                        <div id="list">
-                            <div class="form-group">
-                                <label class="sr-only" for="searchbox">Search</label>
-                                <input type="text" name="search" id="searchbox" placeholder="Search" class="form-control"/>
-                            </div>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        List Item 1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        List Item 1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        List Item 1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        List Item 1
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div id="map">
                             
                             
