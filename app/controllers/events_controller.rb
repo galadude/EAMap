@@ -35,7 +35,17 @@ class EventsController < ApplicationController
 	def index
 		@events = Event.all
 	end
+	
+	def list_as_json
+		@events = Event.all
+		@json_events = @events.to_json()
+		render :json => @json_events
+	end
 
+	def map
+		
+	end
+	
 	def create 
 		@event = Event.new(params.require(:event).permit(
 		:name, :location, :description, :organisation, :latitude, :longitude
