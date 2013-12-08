@@ -1,6 +1,5 @@
 # todo
 * limit user registration
-* limit certain routes to admins
-
+* some how make a smart way of creating admins
 # remember
 * admin is default
