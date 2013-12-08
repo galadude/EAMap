@@ -35,6 +35,7 @@ class EventsController < ApplicationController
 	def list_as_json
 		@events = Event.all
 		@json_events = @events.to_json()
+		render :json => @json_events
 	end
 
 	def map
