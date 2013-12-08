@@ -1,10 +1,14 @@
 Eamap::Application.routes.draw do
   
+  get "admin/", to: 'admin#index'
+
   root :to => 'events#map'
   
   get 'events/list_as_json', to: 'events#list_as_json'
   devise_for :users
   resources :events
+
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

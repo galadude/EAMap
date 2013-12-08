@@ -1,13 +1,30 @@
+<%= link_to 'back to admin' , admin_path %> 	
 <h1> events </h1> 
+
 <% if current_user.try(:admin?) %>
 	<%= link_to 'new event', new_event_path  %> 
 <% end %>
-
+<table cellpadding='5' bgcolor="#AAA" >
+	<tr>
+		<td>name</td>
+		<td>organisation</td>
+		<td>location</td>
+		<td>description</td>
+		<td>longitude</td>
+		<td>latitude</td>
+		<td></td>
+		<td></td>
+	<tr>
 <% @events.each do |event| %> 
-	<h3> <%= event.name %> </h3>
-	<% if current_user.try(:admin?) %> 
-		<%= link_to 'edit', edit_event_path(event) %> |
-		<%= link_to 'delete', event_path(event), method: :delete,data: {confirm: 'sure?'} %> 
-	<% end %>
+	<tr>
+		<td><b><%= event.name %></b> </td>
+		<td><%= event.organisation %></td>
+		<td><%= event.location %></td>
+		<td><%= event.description %></td>
+		<td><%= event.longitude%></td>
+		<td><%= event.latitude %></td>
+		<td><%= link_to 'edit', edit_event_path(event) %> </td>
+		<td><%= link_to 'delete', event_path(event), method: :delete,data: {confirm: 'sure?'} %></td> 
+		</tr>
 <% end %>
-
+</table>
