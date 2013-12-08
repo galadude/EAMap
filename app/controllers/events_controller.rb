@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	def new
+		@event = Event.new
 	end
 
 	def show
@@ -35,8 +36,10 @@ class EventsController < ApplicationController
 		@event = Event.new(params.require(:event).permit(
 		:name, :location, :description, :organisation, :latitude, :longitude
 		))
-
-		@event.save
-		redirect_to @event
+		if @event.save 
+			redirect_to @event
+		else
+			render 'new'
+		end
 	end 
 end
