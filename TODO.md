@@ -1,3 +1,5 @@
 # todo
-* set up errors on form
-* fix the dump at the bottom of the events view
+* limit user registration
+* some how make a smart way of creating admins
+# remember
+* admin is default

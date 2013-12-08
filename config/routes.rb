@@ -3,6 +3,7 @@ Eamap::Application.routes.draw do
   root :to => 'events#map'
   
   get 'events/list_as_json', to: 'events#list_as_json'
+  devise_for :users
   resources :events
   
   # The priority is based upon order of creation: first created -> highest priority.
