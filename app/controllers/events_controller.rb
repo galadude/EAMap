@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
 	before_filter :check_access, :only =>
 		 [:new,:edit,:destroy,:update]
-	#,:edit,:destroy
-
+	
+		 
 	def new
 		@event = Event.new
 	end

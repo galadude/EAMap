@@ -1,9 +1,7 @@
 <%= link_to 'back to admin' , admin_path %> 	
 <h1> events </h1> 
+<%= link_to 'new event', new_event_path  %>
 
-<% if current_user.try(:admin?) %>
-	<%= link_to 'new event', new_event_path  %> 
-<% end %>
 <table cellpadding='5' bgcolor="#AAA" >
 	<tr>
 		<td>name</td>
