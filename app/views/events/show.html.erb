@@ -1,7 +1,51 @@
-<h1> An event! </h1>
-<%= @event.name %> | 
-<%= @event.description %> 
-<br>
-<%= link_to 'edit', edit_event_path(@event) %> 
-<br>
-<%= link_to 'back', events_path %> 
+<h1> <%= @event.name %> </h1>
+
+<div class="container">
+    <div class="row"> 
+        <div class="col-md-6 box">
+        <h3>Description</h3>
+    <%= @event.description %> 
+    <br>
+    <%= link_to 'edit', edit_event_path(@event) %> 
+    <br>
+    <%= link_to 'back', events_path %> 
+        </div>
+        
+        <div class="col-md-6">
+            <div id="map">
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        map = L.map('map').setView([<%= @event.latitude %>, <%= @event.longitude %>], 6);
+        L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+        }).addTo(map);
+        
+            
+        draw_map();
+    });
+    selected_event = "";
+    
+    
+    function draw_map() {
+        events = [{
+            latitude : <%= @event.latitude %>,
+            longitude : <%= @event.longitude %>
+        }];
+        var len = events.length;
+        for (var i = 0; i < len; i++) {
+            var lat = events[i].latitude;
+            var lon = events[i].longitude;
+            var marker = L.marker([lat, lon]).addTo(map);
+        }
+    }
+    
+</script>

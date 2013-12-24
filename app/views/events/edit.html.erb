@@ -1,3 +1,9 @@
+<% content_for :head do %>
+   <%= stylesheet_link_tag "jquery-gmaps-latlon-picker" -%>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+   <%= javascript_include_tag "jquery-gmaps-latlon-picker" %>
+<% end %>
+
 <h1> edit event </h1> 
 <%= link_to 'index', events_path %> 
 <%= form_for :event, url: event_path(@event), method: :patch do |f| %>
@@ -14,11 +20,48 @@
   </div>
   <% end %>
 
-<p>	<%= f.label :name %> <%= f.text_field :name %> </p>
-<p>	<%= f.label :location %> <%= f.text_field :location %> </p>
-<p>	<%= f.label :description %> <%= f.text_field :description %> </p>
-<p>	<%= f.label :organisation %> <%= f.text_field :organisation %> </p>
-<p>	<%= f.label :latitude %> <%= f.text_field :latitude %> </p>
-<p>	<%= f.label :longitude %> <%= f.text_field :longitude %> </p>
-<p> <%= f.submit %> </p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">	
+            <%= f.label :name %> <%= f.text_field :name, :class => "form-control" %>
+        </div>
+        <div class="form-group">	
+            <%= f.label :location %> <%= f.text_field :location, :class => "form-control"   %> 
+        </div>
+        <div class="form-group">	
+            <%= f.label :description %> <%= f.text_area :description, :class => "form-control"  %>
+        </div>
+        <div class="form-group">	
+            <%= f.label :organisation %> <%= f.text_field :organisation, :class => "form-control" %> 
+        </div>
+        <div class="form-group">
+            <button  type="submit" name="commit" class="btn btn-primary" value="">Save</button>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <label>Location (double click on a point on the map)</label>
+        <fieldset class="gllpLatlonPicker form-inline">
+            <!--
+            <div class="input-group">
+                <input type="text" class="gllpSearchField form-control">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search gllpSearchButton" value="search"></span>
+                </span>
+            </div>
+            -->
+            <div id="map-holder">
+                <div class="gllpMap">Google Maps</div>
+            </div>
+            <%= f.hidden_field :latitude, :class => "form-control gllpLatitude" %> 
+             <%= f.hidden_field :longitude, :class => "form-control gllpLongitude" %> 
+            <input type="hidden" class="gllpZoom" value="3"/>
+            
+        </fieldset>
+    
+    </div>
+    
+</div>
+
 <% end %>

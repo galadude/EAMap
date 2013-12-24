@@ -87,7 +87,7 @@
                     var lat = events[i].latitude;
                     var lon = events[i].longitude;
                     var marker = L.marker([lat, lon]).addTo(map);
-                    var popup_text = "Event: " + events[i].name;
+                    var popup_text = "<h3>" + events[i].name + "</h3>";
                     popup_text += "<br /> Location: " + events[i].location;
                     marker.bindPopup(popup_text);
                     marker_array.push(marker);

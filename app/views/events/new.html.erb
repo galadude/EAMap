@@ -1,3 +1,9 @@
+<% content_for :head do %>
+   <%= stylesheet_link_tag "jquery-gmaps-latlon-picker" -%>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+   <%= javascript_include_tag "jquery-gmaps-latlon-picker" %>
+<% end %>
+
 <h1> Add event </h1> 
 <%= form_for :event, url: events_path do |f| %>
 
@@ -17,35 +23,52 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">	
-            <label for="name-input" >Name: </label>
-            <input type="text" class="form-control" name="event[name]" id="name-input"/>
+            <%= f.label :name %> <%= f.text_field :name, :class => "form-control" %>
         </div>
         <div class="form-group">	
-            <label for="locaton-input" >Location: </label>
-            <input type="text" class="form-control" name="event[location]" id="location-input"/>
+            <%= f.label :location %> <%= f.text_field :location, :class => "form-control"   %> 
         </div>
         <div class="form-group">	
-            <label for="description-input" >Description: </label>
-            <textarea id="description-input" class="form-control" name="event[description]">
-                
-            </textarea>
+            <%= f.label :description %> <%= f.text_area :description, :class => "form-control"  %>
         </div>
         <div class="form-group">	
-            <label for="organisation-input" >Organisation: </label>
-            <input type="text" class="form-control" organisation="event[organisation]" id="organisation-input"/>
-        </div>
-        <div class="form-group">	
-            <label for="latitude-input" >Latitude: </label>
-            <input type="text" class="form-control" name="event[latitude]" id="latitude-input"/>
-        </div>
-        <div class="form-group">	
-            <label for="longitude-input" >Longitude: </label>
-            <input type="text" class="form-control" name="event[longitude]" id="longitude-input"/>
+            <%= f.label :organisation %>
+            <%= select_tag(:organisation,  options_for_select([['None/Other', "None/Other"],
+                ["The Life You Can Save","The Life You Can Save"], 
+                ["Giving What We Can","Giving What We Can"],
+                ["THINK","THINK"],
+                ["80,000 Hours","80,000 Hours"]]), :class => "form-control") %>
         </div>
         <div class="form-group">
-            <button  type="submit" name="commit" class="btn btn-primary">Save</button>
+            <button  type="submit" name="commit" class="btn btn-primary" value="">Save</button>
         </div>
     </div>
+    
+    <div class="col-md-6">
+        <label>Location (double click on a point on the map)</label>
+        <fieldset class="gllpLatlonPicker form-inline">
+            <!--
+            <div class="input-group">
+                <input type="text" class="gllpSearchField form-control">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search gllpSearchButton" value="search"></span>
+                </span>
+            </div>
+            -->
+            <div id="map-holder">
+                <div class="gllpMap">Google Maps</div>
+            </div>
+            <%= f.hidden_field :latitude, :class => "form-control gllpLatitude" %> 
+             <%= f.hidden_field :longitude, :class => "form-control gllpLongitude" %> 
+            <input type="hidden" class="gllpZoom" value="3"/>
+            
+        </fieldset>
+    
+    </div>
+    
+</div>
+
+<div class="row">
 </div>
 <% end %>
 

@@ -15,6 +15,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
 	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
     
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -31,7 +32,7 @@
             background:url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
             height:100%;
         }
-        h1, h2, h3 {
+        h1, h2{
             font-family:'Oregano';
         }
         table.table {
@@ -105,8 +106,22 @@
             float:right;
             margin-right:20px;
         }
-        
+        #map-holder {
+            float:left;
+            padding:4px;
+            background:#ffffff;
+            border:1px solid #ccc;
+        }
+        .box {
+            background:#ffffff;
+            border-radius:4px;
+            padding:1em;
+            padding-bottom:2em;
+            border:2px solid #ddd;
+        }
     </style>
+    
+    <%= yield :head %>
 </head>
 <body>
     <div id="wrapper">
