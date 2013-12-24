@@ -2,17 +2,18 @@
 <h1> events </h1> 
 <%= link_to 'new event', new_event_path  %>
 
-<table cellpadding='5' bgcolor="#AAA" >
-	<tr>
-		<td>name</td>
-		<td>organisation</td>
-		<td>location</td>
-		<td>description</td>
-		<td>longitude</td>
-		<td>latitude</td>
-		<td></td>
-		<td></td>
-	<tr>
+<table cellpadding='5' class="table table-bordered table-striped" bgcolor="#AAA" >
+	<thead>
+		<th>name</th>
+		<th>organisation</th>
+		<th>location</th>
+		<th>description</th>
+		<th>longitude</th>
+		<th>latitude</th>
+		<th></th>
+		<th></th>
+	</thead>
+    <tbody>
 <% @events.each do |event| %> 
 	<tr>
 		<td><b><%= event.name %></b> </td>
@@ -25,4 +26,5 @@
 		<td><%= link_to 'delete', event_path(event), method: :delete,data: {confirm: 'sure?'} %></td> 
 		</tr>
 <% end %>
+    </tbody>
 </table>

@@ -14,13 +14,39 @@
   </div>
 <% end %>
 <br>
-<p>	<%= f.label :name %> <%= f.text_field :name %> </p>
-<p>	<%= f.label :location %> <%= f.text_field :location %> </p>
-<p>	<%= f.label :description %> <%= f.text_field :description %> </p>
-<p>	<%= f.label :organisation %> <%= f.text_field :organisation %> </p>
-<p>	<%= f.label :latitude %> <%= f.text_field :latitude %> </p>
-<p>	<%= f.label :longitude %> <%= f.text_field :longitude %> </p>
-<p> <%= f.submit %> </p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">	
+            <label for="name-input" >Name: </label>
+            <input type="text" class="form-control" name="event[name]" id="name-input"/>
+        </div>
+        <div class="form-group">	
+            <label for="locaton-input" >Location: </label>
+            <input type="text" class="form-control" name="event[location]" id="location-input"/>
+        </div>
+        <div class="form-group">	
+            <label for="description-input" >Description: </label>
+            <textarea id="description-input" class="form-control" name="event[description]">
+                
+            </textarea>
+        </div>
+        <div class="form-group">	
+            <label for="organisation-input" >Organisation: </label>
+            <input type="text" class="form-control" organisation="event[organisation]" id="organisation-input"/>
+        </div>
+        <div class="form-group">	
+            <label for="latitude-input" >Latitude: </label>
+            <input type="text" class="form-control" name="event[latitude]" id="latitude-input"/>
+        </div>
+        <div class="form-group">	
+            <label for="longitude-input" >Longitude: </label>
+            <input type="text" class="form-control" name="event[longitude]" id="longitude-input"/>
+        </div>
+        <div class="form-group">
+            <button  type="submit" name="commit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</div>
 <% end %>
 
 	<!--:name :location :description :organisation :latitude :longitude-->
