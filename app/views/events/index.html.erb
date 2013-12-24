@@ -1,15 +1,19 @@
-<%= link_to 'back to admin' , admin_path %> 	
-<h1> events </h1> 
-<%= link_to 'new event', new_event_path  %>
-
+	
+<% if current_user.try(:admin?) %>
+    <%= link_to 'new event', new_event_path  %>
+<% end %>
 <table cellpadding='5' class="table table-bordered table-striped" bgcolor="#AAA" >
 	<thead>
 		<th>name</th>
 		<th>organisation</th>
 		<th>location</th>
 		<th>description</th>
-		<th></th>
-		<th></th>
+        <th></th>
+        
+        <% if current_user.try(:admin?) %>
+            <th></th>
+            <th></th>
+        <% end %>
 	</thead>
     <tbody>
 <% @events.each do |event| %> 
@@ -18,8 +22,11 @@
 		<td><%= event.organisation %></td>
 		<td><%= event.location %></td>
 		<td><%= event.description %></td>
-		<td><%= link_to 'edit', edit_event_path(event), :class => 'btn btn-primary' %> </td>
-		<td><%= link_to 'delete', event_path(event), :class => 'btn btn-primary', method: :delete,data: {confirm: 'sure?'} %></td> 
+        <td><%= link_to 'View Details', event_path(event) %></td>
+        <% if current_user.try(:admin?) %>
+            <td><%= link_to 'edit', edit_event_path(event), :class => 'btn btn-primary' %> </td>
+            <td><%= link_to 'delete', event_path(event), :class => 'btn btn-primary', method: :delete,data: {confirm: 'sure?'} %></td> 
+        <% end %>
 		</tr>
 <% end %>
     </tbody>

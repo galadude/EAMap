@@ -1,3 +1,4 @@
+<div id="login-div">
 <% if user_signed_in? %>
   <p>Welcome <%= current_user.email %> 
   
@@ -5,9 +6,12 @@
   	<b> admin </b>
   <% end -%>
     <span class="glyphicon glyphicon-user"></span>
+  
+  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
   </p>
-  <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
 <% else %>
-  <p>You are not signed in.</p>
+  <p>You are not signed in.
   <%= link_to 'Login', new_user_session_path %>
+  </p>
 <% end %>
+</div>

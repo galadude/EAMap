@@ -1,19 +1,11 @@
 
-         
-    
-
-        <div class="row">
-            <div class="col-md-12 ">
-                <h1>Effective Altruist Meetups</h1>
-            </div>
-            
-        </div>
+        
         <div class="row">
             <div id="map-wrapper" class="col-md-12">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6">
+                        <!--
                         <div class="btn-group" data-toggle="buttons">
-                            
                             <label class="btn  btn-primary">
                               <input type="radio" name="options" id="option1"> All
                             </label>
@@ -36,6 +28,7 @@
                               <input type="radio" name="options" id="option2"> Regular
                             </label>
                         </div>
+                        -->
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -89,6 +82,8 @@
                     var marker = L.marker([lat, lon]).addTo(map);
                     var popup_text = "<h3>" + events[i].name + "</h3>";
                     popup_text += "<br /> Location: " + events[i].location;
+                    var event_link = "<a href='/events/" + events[i].id + "/'>View Details</a>";
+                    popup_text += "<br /> " + event_link;
                     marker.bindPopup(popup_text);
                     marker_array.push(marker);
                 }
