@@ -1,8 +1,10 @@
 <% if user_signed_in? %>
   <p>Welcome <%= current_user.email %> 
+  
   <% if current_user.try(:admin?) %>
   	<b> admin </b>
   <% end -%>
+    <span class="glyphicon glyphicon-user"></span>
   </p>
   <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
 <% else %>
