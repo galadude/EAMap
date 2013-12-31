@@ -15,6 +15,12 @@ end
 group :development, :test do
   gem 'sqlite3'
 end
+
+# Handling static assets on heroku
+group :production do
+  gem 'rails_12factor'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
