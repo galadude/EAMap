@@ -1,3 +1,5 @@
+require 'bluecloth'
+
 class EventsController < ApplicationController
 	before_filter :check_access, :only =>
 		 [:new,:edit,:destroy,:update]
@@ -9,6 +11,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+		@event.description = BlueCloth.new(@event.description).to_html
 	end
 
 	def edit
@@ -34,6 +37,10 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
+		@events.each  {
+			|event|
+			event.description = BlueCloth.new(event.description).to_html
+		}
 	end
 	
 	def list_as_json

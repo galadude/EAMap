@@ -21,6 +21,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+## Markdown Support (Yippee!)
+gem 'bluecloth'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
