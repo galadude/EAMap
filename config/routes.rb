@@ -5,6 +5,8 @@ Eamap::Application.routes.draw do
   root :to => 'events#map'
   
   get 'events/list_as_json', to: 'events#list_as_json'
+  get 'users', to: 'users#index'
+  
   devise_for :users
   resources :events
 
