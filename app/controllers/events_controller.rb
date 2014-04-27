@@ -50,7 +50,7 @@ class EventsController < ApplicationController
 	end
 
 	def map
-		
+		response.headers["X-Frame-Options"] = "DISABLING THIS HEADER"
 	end
 	
 	def create 
