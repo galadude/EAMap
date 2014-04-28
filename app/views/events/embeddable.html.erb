@@ -1,0 +1,57 @@
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map">
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            
+                
+        
+        
+        
+    <script type="text/javascript">
+        $(document).ready(function() {
+			map = L.map('map').setView([53.342148, 0.268659], 6);
+			L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+				maxZoom: 18
+			}).addTo(map);
+        });
+        selected_event = "";
+        
+        var marker_array = [];
+        function clear_markers() {
+            var len_arr = marker_array.length;
+            for (var y = 0; y < len_arr; y++) {
+                map.removeLayer(marker_array[y])
+            }
+        }
+        
+        function draw_map() {
+            $.ajax({
+                url: "/events/list_as_json"
+            })
+            .done(function( events ) {
+                clear_markers();
+                var len = events.length;
+                for (var i = 0; i < len; i++) {
+                    var lat = events[i].latitude;
+                    var lon = events[i].longitude;
+                    var marker = L.marker([lat, lon]).addTo(map);
+                    var popup_text = "<h3>" + events[i].name + "</h3>";
+                    popup_text += "<br /> Location: " + events[i].location;
+                    var event_link = "<a href='/events/" + events[i].id + "/'>View Details</a>";
+                    popup_text += "<br /> " + event_link;
+                    marker.bindPopup(popup_text);
+                    marker_array.push(marker);
+                }
+            });
+        }
+        draw_map();
+        
+    </script>

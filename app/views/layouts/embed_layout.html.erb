@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ea Map</title>
+  
+  
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	 <!--[if lte IE 8]>
+		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+	 <![endif]-->
+                
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,300|Open+Sans:400,300,600,700|Oregano' rel='stylesheet' type='text/css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+    
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  
+  
+    <style>
+        html,body {
+            height:100%;
+        }
+        #wrapper {
+            padding:0;
+            font-family:'Open Sans';
+            height:100%;
+        }
+        h1{
+            font-family:'Oregano';
+        }
+        table.table {
+            background:white;
+        }
+        h1 {
+            font-size:4em;
+            color:#464646;
+            text-align:center;
+        }
+        #map {
+            border:1px solid #ccc;
+            border-radius:4px;
+            height:500px;
+            background:#f9f9f9;
+            padding:5px;
+            border:1px solid #ccc;
+            
+        }
+        #map-wrapper {
+            padding:5px;
+            border-radius:8px;
+        
+        }
+        #map-wrapper .col-md-12 {
+            background:#ffffff;
+            border-radius:4px;
+            border:1px solid #ccc;
+            padding:5px;
+        }
+        #list ul li a {
+            height:50px;
+            padding:20px;
+            background:#fff;
+            border-bottom:1px solid #ccc;
+            display:block;
+            width:100%;
+        
+        }
+        #list ul li a:hover {
+            text-decoration: none;
+            background:#3276B1;
+            color:white;
+        
+        }
+        #list ul li {
+            list-style:none;
+            display:block;
+            width:100%;
+        
+        }
+        #list {
+            border:1px solid #ccc;
+            border-radius:4px;
+            height:800px;
+            margin-right:-20px;
+        }
+        #list ul {
+            padding-left:0;
+        }
+        .top-buffer {
+            margin-top:10px;
+        }
+        #list .form-group {
+            padding:10px;
+        }
+        #list {
+            background:white;
+        }
+        .btn-group {
+            float:right;
+            margin-right:20px;
+        }
+        #map-holder {
+            float:left;
+            padding:4px;
+            background:#ffffff;
+            border:1px solid #ccc;
+        }
+        .box {
+            background:#ffffff;
+            border-radius:4px;
+            padding:1em;
+            padding-bottom:2em;
+            border:2px solid #ddd;
+        }
+        .centre-nav {
+            text-align:center;
+            font-size:18px;
+        }
+        #login-div p{
+            margin-top:3em;
+        }
+    </style>
+    
+    <%= yield :head %>
+</head>
+<body>
+    <div id="wrapper">
+
+    <%= yield %>
+    </div>
+</body>
+</html>
