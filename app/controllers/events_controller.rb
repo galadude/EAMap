@@ -48,9 +48,14 @@ class EventsController < ApplicationController
 		@json_events = @events.to_json()
 		render :json => @json_events
 	end
-
+	
+	# link to embed the map alone
+	def embeddable
+		response.headers["X-Frame-Options"] = "Disabling this header"
+		render :layout => "embed_layout"
+	end
+	
 	def map
-		response.headers["X-Frame-Options"] = "DISABLING THIS HEADER"
 	end
 	
 	def create 
